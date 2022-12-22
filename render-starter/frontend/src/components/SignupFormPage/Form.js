@@ -14,16 +14,16 @@ function Form({ initialState }) {
 		e.preventDefault();
 		const formValue = getState();
 
-		console.log("submitted: ", formValue);
+		// console.log("submitted: ", formValue);
 
 		if (formValue.password !== formValue.confirmPassword) {
 			return formDispatch({
 				passwordError: "Passwords must match",
-				confirmPasswordError: "Passwords must match"
+				confirmPasswordError: "Passwords must match",
 			});
 		}
 
-    reset()
+		reset();
 
 		const send = {
 			email: formValue.email,
@@ -50,7 +50,7 @@ function Form({ initialState }) {
 		});
 	};
 
-  const reset = () => formDispatch(initialState)
+	const reset = () => formDispatch(initialState);
 
 	return (
 		<>

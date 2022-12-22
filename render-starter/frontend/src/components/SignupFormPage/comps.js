@@ -3,7 +3,7 @@ import { useStore as useFormStore } from "../../libs/fast-context/FormContext";
 const InputField = (props) => {
 	const [data, dispatch] = useFormStore((store) => store[props.value]);
 	// todo track your renders:
-	// console.log('inputfield ' + value.italics() + ' rendering')
+	console.log('inputfield ' + props.value.italics() + ' rendering')
     // console.log("inputfield, data: ", data)
 	return (
 		<input
@@ -16,7 +16,7 @@ const InputField = (props) => {
 
 const ErrorDisplay = ({ error }) => {
 	const [errorData] = useFormStore((store) => store[error]);
-    // console.log("error: ", error)
+    console.log("error: ", errorData)
 	return <span>{errorData}</span>;
 };
 
