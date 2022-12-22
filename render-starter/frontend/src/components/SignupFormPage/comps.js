@@ -1,32 +1,33 @@
-
 import { useStore as useFormStore } from "../../libs/fast-context/FormContext";
 
 const InputField = (props) => {
-	const [slice, dispatch] = useFormStore((store) => store[props.value]);
-    // todo track your renders:
+	const [data, dispatch] = useFormStore((store) => store[props.value]);
+	// todo track your renders:
 	// console.log('inputfield ' + value.italics() + ' rendering')
+    // console.log("inputfield, data: ", data)
 	return (
-        <input
-        {...props}
-        value={slice.data}
-        onChange={(e) => dispatch({ [props.value]: e.target.value })}
+		<input
+			{...props}
+			value={data}
+			onChange={(e) => dispatch({ [props.value]: e.target.value })}
 		/>
-        );
-    };
-    
-const ErrorDisplay = ({ value }) => {
-    const [error] = useFormStore((store) => store[value].error);
-    return (
-        <span>{error}</span>
-    )
-}
+	);
+};
+
+const ErrorDisplay = ({ error }) => {
+	const [errorData] = useFormStore((store) => store[error]);
+    // console.log("error: ", error)
+	return <span>{errorData}</span>;
+};
 
 export const TextInput = (props) => {
 	return (
 		<div className="text-input">
-            <label htmlFor={props.id || `input-${props.value}`}>{props.value}</label>
+			<label htmlFor={props.id || `input-${props.value}`}>
+				{props.value}
+			</label>
 			<InputField {...props} />
-            <ErrorDisplay value={props.value} />
+			<ErrorDisplay error={props.error} />
 		</div>
 	);
 };
