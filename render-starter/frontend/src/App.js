@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'
-import { thunkRestoreUser } from './store/session';
-import Navigation from './components/Navigation';
-import { Signup } from './components/SignupFormPage';
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Switch, Route } from "react-router-dom";
+import { thunkRestoreUser } from "./store/session";
+import Navigation from "./components/Navigation";
+import { Signup } from "./components/SignupFormPage";
+import FastForm2 from "./components/FastForm2/FastForm2";
 
 function App() {
-  const dispatch = useDispatch()
-  const [isLoaded, setIsLoaded] = useState(false)
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(thunkRestoreUser()).then(() => setIsLoaded(true))
-  }, [dispatch])
+    dispatch(thunkRestoreUser()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   return (
     <>
@@ -21,7 +22,8 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Switch>
             <Route path="/">
-              <Signup />
+              {/* <Signup /> */}
+              <FastForm2 />
             </Route>
           </Switch>
         </>
