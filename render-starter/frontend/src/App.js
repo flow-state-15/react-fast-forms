@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { thunkRestoreUser } from "./store/session";
 import Navigation from "./components/Navigation";
 import { Signup } from "./components/SignupFormPage";
-import FastForm2 from "./components/FastForm2/FastForm2";
+import FastForm2 from "./components/FastForm2";
 
 function App() {
   const dispatch = useDispatch();
